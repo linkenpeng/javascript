@@ -1,0 +1,34 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>类式继承</title>
+<script language="javascript">
+<!--
+function Person(name) {
+	this.name = name;
+}
+Person.method('getName',function(){
+	return name;
+});
+
+function User(name,password) {
+	this.name = name;
+	this.password = password;
+}
+//从Person对象继承所有方法
+User.inherits(Person);
+
+User.method('getPassword',function() {
+	return this.password;
+});
+
+User.method('getName',function() {
+	return "My name is: " + this.uber('getName');
+});
+-->
+</script>
+</head>
+<body>
+</body>
+</html>

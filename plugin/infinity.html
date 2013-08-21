@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<title>infinity</title>
+<script type="text/javascript" src="jquery.min.js"></script>
+<script type="text/javascript" src="infinity.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	var $el = $('#my-infinite-container');
+	var listView = new infinity.ListView($el);
+	 
+	// ... When adding new content:
+	 
+	var $newContent = $('<p>Hello World</p>');
+	listView.append($newContent);
+	 
+	// ... To remove items from a list:
+	 
+	var listItems = listView.find('.my-items');
+	for(var index = 0, length = listItems.length; index < length; index++) {
+	  listItems[index].remove();
+	}
+});
+</script>
+</head>
+<body>
+<div id="my-infinite-container"></div>
+</body>
+</html>

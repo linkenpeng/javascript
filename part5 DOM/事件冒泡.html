@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>事件冒泡</title>
+<script language="javascript">
+<!--
+//防止事件冒泡
+function stopBubble(e) {
+	//如果传入事件对象,那么就是非IE浏览器
+	if (e && e.stopPropagation) {
+		e.stopPropagation();
+	} else {
+		window.event.cancelBubble = true;
+	}
+}
+
+function loaded() {
+	var all = document.getElementsByTagName("*");
+	for (var i = 0; i < all.length; i++) {
+		all[i].onmouseover = function(e) {
+			this.style.border = "1px solid red";
+			stopBubble(e);
+		}
+		all[i].onmouseout = function(e) {
+			this.style.border = "0px";
+			stopBubble(e);
+		}
+	}
+}
+
+window.onload = loaded;
+-->
+</script>
+</head>
+<body>
+	<h1><b>dom遍历</b></h1>
+	<p class="test">dom节点操作方法</p>
+	<ul>
+		<li>firstChild</li>
+		<li>lastChild</li>
+		<li>previousSibling</li>
+		<li>nextSibling</li>
+		<li>parentNode</li>
+	</ul>
+</body>
+</html>

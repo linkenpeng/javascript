@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>防止浏览器的默认行为</title>
+<script language="javascript">
+<!--
+//防止浏览器的默认行为
+function stopDefault(e) {
+	if (e && e.preventDefault) {
+		e.preventDefault();
+	} else {
+		window.event.returnValue = false;
+	}
+	
+	return false;
+}
+
+function loaded() {
+	var iframe = document.getElementById("iframe");
+	var a = document.getElementsByTagName("a");
+	for (var i = 0; i < a.length; i++) {
+		a[i].onclick = function(e) {
+			iframe.src = this.href;
+			stopDefault(e);
+		};		
+	}
+}
+
+window.onload = loaded;
+-->
+</script>
+</head>
+<body>
+	
+	<p><a href="http://www.baidu.com">另外一个网页</a></p>
+	
+	<iframe border="0" src="http://www.hao123.com" id="iframe" width="100%" height="800"></iframe>
+</body>
+</html>

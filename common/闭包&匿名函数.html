@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<title>匿名函数，闭包</title>
+<script type="text/javascript">
+window.onload = function() {
+	var obj = document.getElementById("main");
+	var items = ["click","keypress"];
+	for ( var i = 0; i < items.length; i++) {
+		(function(){
+			var item = items[i];
+			obj["on" + item] = function() {
+				alert("Thanks for your " + item);
+			};
+		})();
+	}
+	obj["onkeydown"] = function() {alert("keydown");};
+	obj.onkeyup = function() {alert("keyup");};
+};
+</script>
+</head>
+<body>
+<input type="text" id="main" />
+</body>
+</html>

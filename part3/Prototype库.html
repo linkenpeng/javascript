@@ -1,0 +1,92 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>Prototype库</title>
+<script language="javascript">
+<!--
+//创建一个名叫 Class 的全局对象
+var Class = {
+	//它只有一个函数，其作用是创建一个新的对象构造函数
+	create: function() {
+		// 创建一个匿名的对象构造函数
+		return function() {
+			//调用它本身的初始化方法
+			this.initialize.apply(this,arguments);
+		}
+	}
+};
+
+Object.extend = function(destination, source) {
+	for (property in source) {
+		destination[property] = source[property];
+	}
+	return destination;
+};
+
+Object.extend(String.prototype, {
+	stripTags: function() {
+		return this.replace(/<\/?[^>]+>/gi,'');
+	},
+	
+	toArray: function() {
+		return this.split('');
+	},
+	
+	camelize: function() {
+		var oStringList = this.split('-');
+		
+		if(oStringList.length == 1)
+			return oStringList[0];
+			
+		var camelizedString = this.indexOf('-') == 0
+			? oStringList[0].charAt(0).toUpperCase() + oStringList[0].substring(1)
+			: oStringList[0];
+		
+		for (var i = 1, len = oStringList.length; i < len; i++) {
+			var s = oStringList[i];
+			camelizedString += s.charAt(0).toUpperCase() + s.substring(1);
+		}
+		
+		return camelizedString;
+	}
+});
+
+//alert("<b><li>Hello</li>,world!</b>".stripTags());
+//alert("abcdefg".toArray()[3]);
+//alert("background-color".camelize());
+
+var Person = Class.create();
+
+Object.extend(Person.prototype, {
+	initialize: function(name) {
+		this.name = name;
+	},
+	
+	getName: function() {
+		return this.name;
+	}
+});
+
+var User = Class.create();
+
+User.prototype = Object.extend(new Person(), {
+	initialize: function(name, password) {
+		this.name = name;
+		this.password = password;
+	},
+	
+	getPassword: function() {
+		return this.password;
+	}
+});
+
+var u = new User('a','p');
+alert(u.getPassword());
+alert(u.getName());
+-->
+</script>
+</head>
+<body>
+</body>
+</html>

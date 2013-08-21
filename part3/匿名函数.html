@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>匿名函数</title>
+<script language="javascript">
+<!--
+	var name = "The Window";
+　　var object = {
+　　　　name : "My Object",
+　　　　getNameFunc : function(){
+　　　　　　return function(){
+　　　　　　　　return this.name; //this是window对象
+　　　　　　};
+　　　　}
+　　};
+　　alert(object.getNameFunc()());
+
+
+	var name = "The Window";
+　　var object = {
+　　　　name : "My Object",
+　　　　getNameFunc : function(){
+　　　　　　var that = this;
+　　　　　　return function(){				
+　　　　　　　　return that.name; //this是object对象
+　　　　　　};
+　　　　}
+　　};
+　　alert(object.getNameFunc()());
+-->
+</script>
+</head>
+<body>
+</body>
+</html>

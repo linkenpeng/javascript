@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>引用</title>
+<script language="javascript">
+<!--
+var obj = new Object();
+var objref = obj;
+obj.oneProperty = true;
+//alert(obj.oneProperty===objref.oneProperty); //true
+
+var items = new Array("one","tow","three");
+var itemsRef = items;
+items.push("four");
+//alert(items.length == itemsRef.length); //true
+
+items = new Array("new","array"); //创建了一个新对象
+//alert(items.length != itemsRef.length); //true
+
+var item = "test";
+var itemRef = item;
+item +="ing"; //创建一个新的对象，而非修改原对象
+alert(item.length != itemRef.length); //true
+
+-->
+</script>
+</head>
+<body>
+</body>
+</html>

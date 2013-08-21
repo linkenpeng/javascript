@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>上下文对象</title>
+<script language="javascript">
+<!--
+/*
+var obj = {
+	yes: function() {
+		this.val = true;
+	},
+	no: function() {
+		this.val = false;
+	}
+};
+//alert(obj.va == null); // true val属性还没有存在
+obj.yes();
+//alert(obj.val == true); // val 被赋值为true
+
+window.no = obj.no;
+window.no();
+//alert(obj.val == true); //true
+//alert(window.val == false); //ture 
+
+*/
+-->
+</script>
+</head>
+<body>
+<div id="main" style="height:200px;background-color:#eeeeee;"> 哈哈哈哈 </div>
+<script language="javascript">
+<!--
+	function changecolor(color) {
+		this.style.background = color;
+	}
+	var main = document.getElementById("main");
+	changecolor.call(main, "red");
+	function setBodyColor() {
+		changecolor.apply(document.body, arguments);
+	}
+	setBodyColor("blue");	
+-->
+</script>
+</body>
+</html>

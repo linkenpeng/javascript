@@ -1,0 +1,57 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>闭包</title>
+<script language="javascript">
+<!--
+(function(){
+	var msg = "Thanks for visiting!";
+	window.onunload = function() {
+		alert(msg);
+	}
+})();
+</script>
+</head>
+<body>
+<div id="main" style="height:200px;background-color:#eeeeee;"></div>
+<script language="javascript">
+<!--
+	var obj = document.getElementById("main");
+	var items = ["click", "keypress"];
+	for (var i = 0; i < items.length; i++) {
+		(function(){
+			var item = items[i];
+			obj["on"+item] = function() {
+				alert("Thanks for your " + item);
+			};
+		})();
+	}
+	/*
+	obj.style.border = "1px solid red";
+
+	setTimeout(function(){
+		obj.style.display = "none";
+	},1000);
+
+	function displayedAlert(msg, time) {
+		setTimeout(function(){
+			alert(msg);
+		},time);
+	}
+
+	displayedAlert("Welcome!", 2000);
+	
+	function addGenerator(num) {
+		return function(toAdd) {
+			return num + toAdd
+		};
+	}
+	
+	var addFive = addGenerator(5);
+	alert(addFive(4) == 9); //ture
+	*/
+-->
+</script>
+</body>
+</html>

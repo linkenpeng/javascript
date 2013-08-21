@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<title>call,apply的区别</title>
+<script type="text/javascript">
+<!--
+function f(a, b)
+{
+    alert(a + "\r\n" + b + "\r\n" + this.c);
+}
+ 
+function O1()
+{
+    this.c = "c1";
+    this.f = f;
+}
+ 
+function O2()
+{
+    this.c = "c2";
+    this.f = f;
+}
+ 
+var o1 = new O1();
+var o2 = new O2();
+//call 是把函数的参数逐一加在 call 中，apply 是把函数的参数存为数组再加在 apply 中。
+f.call(o1, "a1", "a2");
+f.apply(o2, ["a1", "a2"]);
+-->
+</script>
+</head>
+<body>
+<input type="text" id="main" />
+</body>
+</html>

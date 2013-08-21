@@ -1,0 +1,21 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<title>成员方法干掉对象本身</title>
+<script type="text/javascript">
+<!--
+var obj = {t:1};
+obj.func = function(){
+    obj = {t:2};
+};
+obj.func();
+alert(obj.t); // 显示 2
+obj.func(); // 出错
+-->
+</script>
+</head>
+<body>
+
+</body>
+</html>

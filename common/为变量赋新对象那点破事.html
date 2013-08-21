@@ -1,0 +1,74 @@
+<!doctype html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<title>为变量赋值那点破事/title>
+<script type="text/javascript">
+<!--
+
+/*
+function c()
+{
+    var obj = {v:1};
+    obj.func = function()
+    {
+        obj.v = 2;
+    };
+    
+    return obj;
+}
+
+var c1 = c();
+c1.func();
+alert(c1.v); //
+
+var c2 = new c();
+c2.func();
+alert(c2.v); // 
+
+
+function c()
+{
+    var obj = {v:1};
+    obj.func = function()
+    {
+        obj = {v:2};
+    };
+    
+    return obj;
+}
+
+var c1 = c();
+c1.func();
+alert(c1.v); //
+
+var c2 = new c();
+c2.func();
+alert(c2.v); //
+
+*/
+
+function c()
+{
+    this.obj = {v:1};
+    this.func = function()
+    {
+        this.obj = {v:2};
+    };
+}
+
+var c1 = new c();
+c1.func();
+alert(c1.obj.v);
+
+/*
+var c2 = new c();
+c2.func();
+alert(c2.obj.v); //
+*/
+-->
+</script>
+</head>
+<body>
+
+</body>
+</html>

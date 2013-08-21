@@ -1,0 +1,101 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>函数重载和类型检查</title>
+<script language="javascript">
+<!--
+function sendMessage(msg, obj) {
+	if (arguments.length == 2)  {
+		obj.handleMsg(msg);
+	} else {
+		alert(msg);
+	}
+}
+//sendMessage("Hello,World!");
+
+/*
+sendMessage("How are you?", {
+	handleMsg: function (msg) {
+		alert("This is a custom message: " + msg);
+	}
+});
+*/
+
+function makeArray() {
+	var arr = [];
+	for (var i = 0; i < arguments.length; i++) {
+		arr.push(arguments[i]);
+	}
+	return arr;
+}
+
+//var arr = makeArray("one","tow","three");
+//for (var key in arr) {
+//	alert(arr[key]);
+//}
+
+function displayerror(msg) {
+	if (typeof msg == "undefined") {
+		msg = "An error occured.";
+	}
+	alert(msg);
+}
+
+//displayerror("test");
+
+function strict(types, args) {
+	if (types.length != args.length) {
+		throw "Invalid number of arguments. Expected " + types.length + ", received " + args.length + " instead.";
+	}
+	
+	for (var i = 0; i < args.length; i++) {
+		if (args[i].constructor != types[i]) {
+			throw "Invalid argument type. Expected " + types[i].name + ",received " + args[i].constructor.name + " instead.";
+		}
+	}
+}
+
+function UserList(prefix, num, users) {
+	strict([String, Number, Array], arguments);
+	for (var i = 0; i < num; i++) {
+		print(prefix + ":" + users[i]);
+	}
+}
+
+function User(name, age) {
+	this.name = name;
+	this.age  = age;
+}
+
+var a = {an:"object"};
+var b = ["an","array"];
+var c = function(){};
+var d = 55;
+var e = true;
+var f = new User("pre", 6);
+var g = "a string";
+/*
+alert(typeof a); //object
+alert(typeof b); //object
+alert(typeof c); //function
+alert(typeof d); //number
+alert(typeof e); //boolean
+alert(typeof f); //object
+alert(typeof g); //string
+
+alert(a.constructor); // Object()
+alert(b.constructor); // Array()
+alert(c.constructor); // Function()
+alert(d.constructor); // Number()
+alert(e.constructor); // Boolean()
+alert(f.constructor); // User()
+alert(g.constructor); // String()
+*/
+
+-->
+</script>
+</head>
+<body>
+</body>
+</html>

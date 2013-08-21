@@ -1,0 +1,42 @@
+<!doctype html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<title>动态参数</title>
+<script type="text/javascript">
+<!--
+var _tsa = [];
+(function(a , b){
+	f = function(){};
+	f.prototype = {
+		_addTrans : function() {
+			for (var i = 1; i < arguments.length; i++) {
+				console.log(arguments[i]);
+			}
+		},
+		_addItem : function() {	
+			this._addTrans(this,arguments);
+		}
+	};
+	var a = new f();
+	_tsa.push = function(v) {
+		if(a[v[0]]) {
+			a[v[0]].apply(a,v);
+		}
+	};
+})();
+_tsa.push(['_addItem',
+    '1234',           // order ID - required
+    'DD44',           // SKU/code - required
+    'T-Shirt',        // product name
+    'Green Medium',   // category or variation
+    '11.99',          // unit price - required
+    '1'               // quantity - required
+]);
+
+-->
+</script>
+</head>
+<body>
+
+</body>
+</html>

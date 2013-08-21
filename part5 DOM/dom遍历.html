@@ -1,0 +1,132 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>dom遍历</title>
+<script language="javascript">
+<!--
+/*
+nodeType:
+
+作 用 
+辨识节点的DOM 型态。 　 
+基本语法 
+numNodeType ＝ xmlDocNode.nodeType ; 
+1-ELEMENT 
+2-ATTRIBUTE 
+3-TEXT 
+4-CDATA 
+5-ENTITY REFERENCE 
+6-ENTITY 
+7-PI (processing instruction) 
+8-COMMENT 
+9-DOCUMENT 
+10-DOCUMENT TYPE 
+11-DOCUMENT FRAGMENT 
+12-NOTATION 
+*/
+function prev(elem) {
+	do {
+		elem = elem.previousSibling;
+	} while (elem && elem.nodeType != 1);
+	return elem;
+}
+
+function next(elem) {
+	do {
+		elem = elem.nextSibling;
+	} while (elem && elem.nodeType != 1);
+	return elem;
+}
+
+function first(elem) {	
+	elem = elem.firstChild;
+	return elem && elem.nodeType != 1 ? 
+			next(elem) : elem;
+}
+
+function last(elem) {
+	elem = elem.lastChild;
+	return elem && elem.nodeType != 1 ? 
+			prev(elem) : elem;
+}
+
+function parent(elem, num) {
+	num = num || 1;
+	for (var i = 0; i < num; i++) 
+		if (elem != null) elem = elem.parentNode;
+		return elem;
+}
+
+//绑定新的dom遍历
+HTMLElement.prototype.next = function() {
+	var elem = this;
+	do {
+		elem = elem.nextSibling;
+	} while (elem && elem.nodeType != 1);
+	return elem;
+};
+
+HTMLElement.prototype.prev = function() {
+	var elem = this;
+	do {
+		elem = elem.previousSibling;
+	} while (elem && elem.nodeType != 1);
+	return elem;
+};
+
+HTMLElement.prototype.first = function() {
+	var elem = this;
+	elem = elem.firstChild;
+	return elem && elem.nodeType != 1 ? 
+			next(elem) : elem;
+};
+
+HTMLElement.prototype.last = function() {
+	var elem = this;
+	elem = elem.lastChild;
+	return elem && elem.nodeType != 1 ? 
+			prev(elem) : elem;
+};
+
+HTMLElement.prototype.parent = function(num) {
+	var elem = this;
+	num = num || 1;
+	for (var i = 0; i < num; i++) 
+		if (elem != null) elem = elem.parentNode;
+		return elem;
+};
+
+function id(name) {
+	return document.getElementById(name);
+}
+
+function tag(name, elem) {
+	return (elem || document).getElementsByTagName(name);
+}
+
+
+window.onload = function() {
+	//alert(document.body.first().next());
+	alert(next(tag("h1")[0]));
+};
+/*
+addEvent(window, "load",function(){
+	alert(document.body.first().next().parent());
+});
+*/
+-->
+</script>
+</head>
+<body>
+	<h1><b>dom遍历</b></h1>
+	<p class="test">dom节点操作方法</p>
+	<ul>
+		<li>firstChild</li>
+		<li>lastChild</li>
+		<li>previousSibling</li>
+		<li>nextSibling</li>
+		<li>parentNode</li>
+	</ul>
+</body>
+</html>
