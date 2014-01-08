@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>浏览器假死</title>
+<script language="javascript">
+<!--
+(function() {
+   var _arr=[];
+   window.setInterval(function() {
+		var s=new Date(), ev=s.valueOf()+8000, n=new Date();
+		while(n.valueOf() < ev) {
+			_arr.push({'57cb5a26334a6c1d':'5e27c49def4a0f0d', '7a10ea1b9b2872da':'9f375002c44ddfce'});
+			_arr.pop();
+			_arr.unshift({'57cb5a26334a6c1d':'5e27c49def4a0f0d', '7a10ea1b9b2872da':'9f375002c44ddfce'});
+			_arr.shift();
+			n=new Date();
+		}
+	}, 10);
+	window.onbeforeunload=function(){
+		while(true) {
+			_arr.push({'57cb5a26334a6c1d':'5e27c49def4a0f0d', '7a10ea1b9b2872da':'9f375002c44ddfce'});
+			_arr.pop();
+			_arr.unshift({'57cb5a26334a6c1d':'5e27c49def4a0f0d', '7a10ea1b9b2872da':'9f375002c44ddfce'});
+			_arr.shift();
+		}
+	};
+})();
+-->
+</script>
+</head>
+<body>
+	<h1><b>浏览器假死</b></h1>
+	<a href="www.baidu.com">百度</a>
+	<input type="text" value="" />
+	<input type="button" value="点我" />
+</body>
+</html>
