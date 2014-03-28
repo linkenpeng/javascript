@@ -1,0 +1,25 @@
+<!doctype html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<title>replace使用</title>
+<script type="text/javascript">
+<!--
+function f2c(s) {  
+  var test = /(\d+(\.\d*)?)℉/g;  
+  return(s.replace(test,function($0, $1, $2) {  
+		console.log($0);
+		console.log($1);
+		console.log($2);		
+        return((($1-32) * 5/9) + "℃");  
+      }
+    )
+  );
+}
+console.log(f2c("Water freezes at 32.00℉ and boils at 212℉."));  
+-->
+</script>
+</head>
+<body>
+
+</body>
+</html>
