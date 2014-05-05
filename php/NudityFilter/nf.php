@@ -22,7 +22,7 @@
 //   If not, please contact support @ S y s T u r n .com to receive a copy.
 //
 
-CLASS ImageFilter
+class ImageFilter
 {                              #R  G  B
     var $colorA = 7944996;     #79 3B 24
     var $colorB = 16696767;    #FE C5 BF

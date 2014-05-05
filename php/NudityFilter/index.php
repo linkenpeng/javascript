@@ -3,7 +3,7 @@ error_reporting(0);
 /*Include the Nudity Filter file*/
 include ('./nf.php');
 /*Create a new class called $filter*/
-$filter = new ImageFilter;
+$filter = new ImageFilter();
 /*Get the score of the image*/
 $score = $filter -> GetScore($_FILES['img']['tmp_name']);
 /*If the $score variable is set*/
@@ -25,7 +25,7 @@ if (isset($score)) {
 	</head>
 	<body>
 		<?php echo $error;?>
-        <form method="post" enctype="multipart/form-data" action="<?php echo $SERVER['PHP_SELF'];?> ">
+        <form method="post" enctype="multipart/form-data" action="<?php echo $_SERVER['PHP_SELF'];?> ">
         Upload image: 
         <input type="file" name="img" id="img" />
         <br />
