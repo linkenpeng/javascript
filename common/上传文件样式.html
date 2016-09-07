@@ -1,0 +1,64 @@
+<!doctype html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<title>上传文件样式</title>
+<style type="text/css">
+.rowInput {  
+    margin: 20px auto;  
+    width: 450px;  
+}  
+  
+.inputLabel {  
+    display: inline-block;  
+    width: 120px;  
+    text-align: right;  
+    margin-right: 20px;  
+}  
+  
+.Btn {  
+    padding: 6px 12px;  
+    width: 80px;  
+    font-size: 14px;  
+    font-weight: 400;  
+    text-align: center;  
+    white-space: nowrap;  
+    vertical-align: middle;  
+    cursor: pointer;  
+    border: 1px solid transparent;  
+    border-radius: 4px;  
+    margin: 2px;  
+    background-color: #69b755;  
+    color: #fff;  
+    margin-bottom: 10px;  
+}
+</style>
+</head>
+
+<body>
+<div class="rowInput">  
+    <label  class="">用户数据:</label>  
+    <input name="file" type="file" size="50" id="file" class="hidden"/>  
+    <input name="userWarehouseFile" type="text" id="userWarehouseFile"/>  
+    <label id="scan" class="Btn" onClick="selectFile()">浏览</label>  
+</div>  
+<div class="rowInput">  
+    <label class="inputLabel"></label>  
+    <button type="submit" class="Btn">导入</button>  
+</div>  
+</body>
+
+<script src="http://cdn.staticfile.org/jquery/2.2.1/jquery.min.js"></script>
+<script type="text/javascript">
+function selectFile() {  
+   $("#file").trigger("click");  
+}  
+
+$(document).ready(function () {  
+   $("#file").change(function(){  
+	   var value = $("#file").val();  
+	   $("#inventoryFile").val(value);  
+   });  
+});  
+</script>
+
+</html>
