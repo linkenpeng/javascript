@@ -1,0 +1,18 @@
+<!doctype html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<title>为变量赋值那点破事</title>
+</head>
+<body onload="show()">
+<script>
+function show() {
+	var str = 'APP://{\"linkPageCode\":\"T80002\",\"params\":\"{\"key1\":\"17032212342\",\"key2\":\"49900\",\"key3\":\"http:\\/\\/agile.huashengju.com\\/pay-callbackUrl.html\",\"key4\":\"95458A2CA69AC8CA\",\"key5\":\"a8e9f41165f698ee7bb410443754afb3\",\"key6\":\"19678F3BC35048678FDE157DEFAC9B9F\",\"key7\":\"\\u5546\\u54c1\\uff1a\\u54f2\\u54c1\\u6d41\\u91d1\\u5c81\\u6708\\u9ad8\\u686325\\u5934\\u8010\\u78e8\\u9676\\u74f7\\u9910\\u5177\\u5957\\u88c5\\u4e54\\u8fc1\\u65b0\\u5a5a\\u793c\\u54c1\\u5957\\u88c5\",\"key8\":\"\\u54f2\\u54c1\\u6d41\\u91d1\\u5c81\\u6708\\u9ad8\\u686325\\u5934\\u8010\\u78e8\\u9676\\u74f7\\u9910\\u5177\\u5957\\u88c5\\u4e54\\u8fc1\\u65b0\\u5a5a\\u793c\\u54c1\\u5957\\u88c5\",\"key9\":\"http:\\/\\/agile.huashengju.com\\/pay-agileresult.html?order_id=1449\"}\"}';
+
+	var c1 = decodeURIComponent(str);
+	
+	console.log(c1);
+}
+window.onload=show
+</script>
+</body>
+</html>
