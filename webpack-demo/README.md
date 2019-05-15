@@ -8,4 +8,7 @@ npm install --save-dev file-loader
 
 npm install --save-dev csv-loader xml-loader
 
+npm install --save-dev html-webpack-plugin
+
+
 ```
