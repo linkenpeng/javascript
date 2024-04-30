@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SSE Client</title>
+</head>
+<body>
+    <h1>Server-Sent Events Demo</h1>
+
+    <script>
+        if (!!window.EventSource) {
+            // 创建与服务器的连接
+            var source = new EventSource("http://localhost:8082/sse");
+
+            source.onmessage = function (event) {
+                console.log(event.data);
+            };
+
+            source.onopen = function () {
+                console.log("Connection opened.");
+            };
+
+            source.onerror = function (error) {
+                console.error("Error:", error);
+            };
+        } else {
+            console.error("SSE is not supported by this browser.");
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>markdown</title>
+</head>
+<body>
+    <body>
+        <div id="content"></div>
+        <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+        <script>
+            const markdownText2 = `  
+            | Header 1 | Header 2 |
+            |----------|----------|
+            | Cell 1   | Cell 2   |
+            | Cell 3   | Cell 4   |
+            `;  
+
+            marked.setOptions({
+                table: true
+            });
+
+            let markdownText = "# 标题 \n 这是一段Markdown文本。 \n  - 列表项一 \n  - 列表项二 \n\n | 表头1 | 表头2 | 表头3 |  \n\n"
+            document.getElementById('content').innerHTML = marked.parse(markdownText2);
+        </script>
+      </body>
+</body>
+</html>
