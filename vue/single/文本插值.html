@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>文本插值</title>
+</head>
+<body>
+    <div id="app">
+        <h2>文本插值</h2>
+        <p><label>变量：</label>{{ title }}</p>
+        <p><label>表达式：</label>{{ 4 + 5 }}</p>
+        <p><label>三目运算:</label>{{ flag ? 4 : 5 }}</p>
+        <p><label>一般函数:</label>{{ show() }}</p>
+        <p><label>函数:</label>{{ show }}</p>
+        <p><label>匿名函数:</label>{{ (() => 4+5)() }}</p>
+        <p><label>对象:</label>{{ {num: 5} }}</p>
+    </div>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script type="text/javascript">
+        const App = {
+            data() {
+                return {
+                    title: '小A学编程',
+                    flag: true,
+                    html: '<span>I am peter.</span>',
+                }
+            },
+            methods:{
+                show() {
+                    console.log("show")
+                    return 'show'
+                }
+            }
+        }
+        Vue.createApp(App).mount('#app')
+    </script>
+</body>
+</html>

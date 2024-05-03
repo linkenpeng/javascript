@@ -12,12 +12,19 @@
     </div>
     <script src="vue.min.js"></script>
     <script>
-        new Vue({
-            el: '#app',
-            data: {
-                message : 'hello Vue'
+        const App = {
+            data() {
+                return {
+                    message : 'hello Vue'
+                }
+            },
+            methods:{
+                show() {
+                    console.log("show")
+                }
             }
-        })
+        }
+        Vue.createApp(App).mount('#app')
     </script>
 </body>
 </html>

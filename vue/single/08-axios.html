@@ -18,10 +18,11 @@
     <script src="vue.min.js"></script>
     <script src="axios.min.js"></script>
     <script>
-        new Vue({
-            el: '#app',
-            data: {
-                userList : []
+        const App = {
+            data() {
+                return {
+                    userList : []
+                }
             },
             created() {
                 this.getlist()
@@ -39,7 +40,8 @@
                     })
                 }
             }
-        })
+        }
+        Vue.createApp(App).mount('#app')
     </script>
 </body>
 </html>

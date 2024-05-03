@@ -4,20 +4,21 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>HTML插值</title>
 </head>
 <body>
     <div id="app">
-        <input type="checkbox" v-model="ok" />
-        <div v-if="ok">选中了</div>
-        <div v-else>没有选中</div>
-    </div>
-    <script src="vue.min.js"></script>
-    <script>
+        <h2>HTML插值</h2>
+        <p><label>变量：</label>{{ html }}</p>
+        <p><div v-html="html"></div></p>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script type="text/javascript">
         const App = {
             data() {
                 return {
-                    ok: false
+                    title: '小A学编程',
+                    flag: true,
+                    html: '<span>I am peter.</span>',
                 }
             },
             methods:{

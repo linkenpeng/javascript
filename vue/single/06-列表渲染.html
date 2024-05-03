@@ -18,15 +18,22 @@
     </div>
     <script src="vue.min.js"></script>
     <script>
-        new Vue({
-            el: '#app',
-            data: {
-                userLis: [
-                    {"name":"linken", "age":18},
-                    {"name":"peter", "age":22},
-                ]
+        const App = {
+            data() {
+                return {
+                    userLis: [
+                        {"name":"linken", "age":18},
+                        {"name":"peter", "age":22},
+                    ]
+                }
+            },
+            methods:{
+                show() {
+                    console.log("show")
+                }
             }
-        })
+        }
+        Vue.createApp(App).mount('#app')
     </script>
 </body>
 </html>

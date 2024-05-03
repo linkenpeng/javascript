@@ -12,20 +12,24 @@
     </div>
     <script src="vue.min.js"></script>
     <script>
-        new Vue({
-            el: '#app',
-            data: {
-                message : 'hello Vue'
+        const App = {
+            data() {
+                return {
+                    message : 'hello Vue'
+                }
             },
-            created() { // 在页面渲染之前
-                debugger
-                console.log("created...")
-            },
-            mounted() { // 在页面渲染之后
-                debugger
-                console.log("mounted...")
+            methods:{
+                created() { // 在页面渲染之前
+                    debugger
+                    console.log("created...")
+                },
+                mounted() { // 在页面渲染之后
+                    debugger
+                    console.log("mounted...")
+                }
             }
-        })
+        }
+        Vue.createApp(App).mount('#app')
     </script>
 </body>
 </html>

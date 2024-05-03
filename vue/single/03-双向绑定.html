@@ -15,15 +15,66 @@
         <br />
         <!-- 双向绑定 -->
         <input type="text" v-model="keyword" />
+
+        <div>
+            <h2>配置信息</h2>
+            <div><label>配置信息:</label><input type="text" v-model="user.name"></div>
+            <div>
+                <label>性别：</label>
+                <input type="radio" name="sex" v-model="user.sex" value="男">男
+                <input type="radio" name="sex" v-model="user.sex" value="女">女
+            </div>
+            <div>
+                <label>星愿单：</label>
+                <input type="checkbox" name="wish" v-model="user.wish" value="iphone">iphone
+                <input type="checkbox" name="wish" v-model="user.wish" value="ipad">ipad
+                <input type="checkbox" name="wish" v-model="user.wish" value="iwatch">iwatch
+                <input type="checkbox" name="wish" v-model="user.wish" value="other">other
+            </div>
+            <div>
+                <label>组号：</label>
+                <select v-model="user.group">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                </select>
+            </div>
+            <div><label>备注:</label><textarea v-model="user.remark"></textarea></div>
+        </div>
+
+        <div>
+            <h2>已配置用户信息</h2>
+            <p>姓名: {{user.name}}</p>
+            <p>性别: {{user.sex}}</p>
+            <p>星愿单: {{user.wish}}</p>
+            <p>组织编号: {{user.group}}</p>
+            <p>备注: {{user.remark}}</p>
+        </div>
+
     </div>
     <script src="vue.min.js"></script>
     <script>
-        new Vue({
-            el: '#app',
-            data: {
-                keyword: '小A学编程'
+        const App = {
+            data() {
+                return {
+                    keyword: '小A学编程',
+                    user: {
+                        name: '',
+                        sex: '男',
+                        wish: [],
+                        group: '',
+                        remark: '',
+                    }
+                }
+            },
+            methods:{
+                show() {
+                    console.log("show")
+                }
             }
-        })
+        }
+        Vue.createApp(App).mount('#app')
     </script>
 </body>
 </html>
