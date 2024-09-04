@@ -5,29 +5,84 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SSE Client</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <style>
+        body {
+          /* display: flex; */
+          justify-content: center;
+          align-items: center;
+          height: 100vh;
+          margin: 0;
+        }
+     
+        .dynamic-text {
+          font-size: 24px;
+          text-align: center;
+          white-space: nowrap;
+          overflow: hidden;
+          border-right: .15em solid orange;
+        }
+    </style>
 </head>
 <body>
     <h1>Server-Sent Events Demo</h1>
-
+    <div class="dynamic-text" id="dynamicText"></div>
+    <div id="content"></div>
     <script>
-        if (!!window.EventSource) {
-            // 创建与服务器的连接
-            var source = new EventSource("http://localhost:8082/sse");
+        $(document).ready(function() {
+            function animateText(content) {
+                var text = content;
+                var length = text.length;
+                var delay = 100; // 每个字符显示的延迟时间
+                var textIndex = 0;
+                var isTyping = true; // 标识文字是否正在显示
+                var isHiding = false; // 标识文字是否正在隐藏
+        
+                function typeText() {
+                    if (textIndex < length && isTyping) {
+                        $('#dynamicText').text(text.substring(0, textIndex + 1));
+                        textIndex++;
+                        setTimeout(typeText, delay);
+                    } else {
+                        $('#content').append("<div>" + text + "</div>");
+                        isTyping = false; // 文字显示完成
+                        isHiding = true; // 准备开始隐藏文字
+                        // setTimeout(eraseText, 1000); // 文字停顿1秒后开始隐藏
+                    }
+                }
+        
+                function eraseText() {
+                    if (textIndex >= 0 && isHiding) {
+                        $('#dynamicText').text(text.substring(0, textIndex));
+                        textIndex--;
+                        setTimeout(eraseText, delay);
+                    } else {
+                        isTyping = true; // 开始重新显示
+                        isHiding = false; // 停止隐藏
+                        textIndex = 0; // 重置 textIndex
+                        setTimeout(typeText, 1000); // 文字停顿1秒后开始显示
+                    }
+                }
+        
+                typeText();
+            }
 
-            source.onmessage = function (event) {
-                console.log(event.data);
-            };
+            var source = new EventSource('http://localhost:8082/sse');
+        
+            source.addEventListener('message', function(e) {
+                animateText(e.data);
+            });
+        
+            source.addEventListener('open', function(e) {
+                console.log('Connection to SSE opened.');
+            });
+        
+            source.addEventListener('error', function(e) {
+                console.error('SSE error:', e);
+            });
+        });
 
-            source.onopen = function () {
-                console.log("Connection opened.");
-            };
-
-            source.onerror = function (error) {
-                console.error("Error:", error);
-            };
-        } else {
-            console.error("SSE is not supported by this browser.");
-        }
     </script>
 </body>
+
 </html>
